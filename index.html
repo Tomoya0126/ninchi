@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>卒研</title>
+</head>
+<body>
+	<table border="1" width=50% height="10%">
+        <tr>
+            <th>◎認知機能を高めるサイト◎</th>
+        </tr>
+    </table>
+    <p align=center><u ><b>ミニゲームで脳を活性化させましょう</b></u></p>
+    <h3>・たすひく計算ゲーム</h3>
+    <input type="button" value="スタート" onclick="clickBtn1()" />
+    <div id="tasuhiku">
+        <script>
+            document.getElementById("tasuhiku").style.display ='none';
+    
+            function clickBtn1(){
+                const p1 = document.getElementById("tasuhiku");
+    
+                tasuhiku.style.display='block';
+            }
+        </script>
+        <hr>
+            <p>表示された式が成り立つように数字を選びましょう。</p>
+            <table border="0" align="center">
+                <tr>
+                    <td></td><td></td><td></td>
+                    <td><span id="mon"></span></td>
+                    <td>？</td>
+                    <td>=<span id="kotae"></span></td>
+                </tr><br />
+                <tr>
+                    <td></td><td></td><td></td><td></td>
+                    <td>↑</td>
+                </tr>
+                <tr>
+                    <td><form><input type="button" value=" 1 " onClick="keisan(1)"></form></td>
+                    <td><form><input type="button" value=" 2 " onClick="keisan(2)"></form></td>
+                    <td><form><input type="button" value=" 3 " onClick="keisan(3)"></form></td>
+                    <td><form><input type="button" value=" 4 " onClick="keisan(4)"></form></td>
+                    <td><form><input type="button" value=" 5 " onClick="keisan(5)"></form></td>
+                    <td><form><input type="button" value=" 6 " onClick="keisan(6)"></form></td>
+                    <td><form><input type="button" value=" 7 " onClick="keisan(7)"></form></td>
+                    <td><form><input type="button" value=" 8 " onClick="keisan(8)"></form></td>
+                    <td><form><input type="button" value=" 9 " onClick="keisan(9)"></form></td>
+                </tr><br />
+            </table>
+        <hr>
+        <th>正解：◯　不正解：×</th>
+        <div id="list"></div>
+
+        <input type="button" value="リロード" onclick="clickBtn2()" />
+        <script>
+            function clickBtn2(){
+                location.reload();
+            }
+        </script>
+        </div>
+
+        <script type="text/javascript"> 
+        keimon = 0;
+        kotae_list = "";
+        mondai();
+
+        function mondai() {
+	        //問題の作成
+	        q1 = Math.floor(Math.random() * 9) +1;
+	        q2 = Math.floor(Math.random() * 9) +1;
+	        a1 = q1 + q2;
+            
+            if (keimon == 0) {
+	            //足し算
+	            document.getElementById("mon").innerHTML = q1 + "+";
+	            document.getElementById("kotae").innerHTML = a1;
+                keimon = 1;
+            }else{
+                //引き算
+                document.getElementById("mon").innerHTML = a1 + "-";
+		        document.getElementById("kotae").innerHTML = q1;
+		        keimon = 0;
+            }
+        }
+
+        function keisan(num) {
+	        a2 = q1 + num; 
+	        if (a1 == a2) {kotae_list +="◯";}
+            else{kotae_list += "×";}
+            document.getElementById("list").innerHTML = kotae_list;
+            mondai();
+        }
+        </script>
+</body>
+</html>
